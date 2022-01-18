@@ -112,11 +112,11 @@ const RegistrationPage = (props) => {
 								/>
 							) : null}
 							<Typography
-								variant="h6"
+								variant={showLogo ? "h4": "body2"}
 								sx={{ color: "#331eb3", textAlign: "center" }}
 							>
 								{!showLogo ? "Powered by " : null}
-								<strong>Blue</strong> Legion
+								<strong>Blue Legion</strong>
 							</Typography>
 						</Stack>
 					</Grid>
