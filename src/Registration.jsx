@@ -80,7 +80,11 @@ const RegistrationPage = (props) => {
 								type="text"
 								helperText="[Surname], [First name] [Other names]"
 							/>
-							<Button color="primary" variant="contained" onClick={handleClick}>
+							<Button
+								color="primary"
+								variant="contained"
+								onClick={handleClick}
+							>
 								Submit
 							</Button>
 						</Stack>
@@ -100,6 +104,7 @@ const RegistrationPage = (props) => {
 							sx={{
 								display: "flex",
 								justifyContent: "center",
+								alignItems: "center",
 							}}
 						>
 							{showLogo ? (
@@ -112,8 +117,8 @@ const RegistrationPage = (props) => {
 								/>
 							) : null}
 							<Typography
-								variant={showLogo ? "h4": "body2"}
-								sx={{ color: "#331eb3", textAlign: "center" }}
+								variant={showLogo ? "h4" : "body2"}
+								sx={{ color: "#3343b3", textAlign: "center" }}
 							>
 								{!showLogo ? "Powered by " : null}
 								<strong>Blue Legion</strong>
