@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/static/css/main.db3d16f4.css",
+    "main.js": "/static/js/main.a2e565a9.js",
+    "static/js/787.a816be03.chunk.js": "/static/js/787.a816be03.chunk.js",
+    "static/media/leaves.png": "/static/media/leaves.b1202954e69fd56ae0df.png",
+    "static/media/blue-legion2.svg": "/static/media/blue-legion2.55bcb814141ff73ba9d56fa5f95326ef.svg",
+    "index.html": "/index.html",
+    "main.db3d16f4.css.map": "/static/css/main.db3d16f4.css.map",
+    "main.a2e565a9.js.map": "/static/js/main.a2e565a9.js.map",
+    "787.a816be03.chunk.js.map": "/static/js/787.a816be03.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.db3d16f4.css",
+    "static/js/main.a2e565a9.js"
+  ]
+}
