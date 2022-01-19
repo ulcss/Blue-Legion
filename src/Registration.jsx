@@ -7,17 +7,25 @@ import {
 	Paper,
 	Typography,
 	useMediaQuery,
+	Alert,
+	CircularProgress,
 } from "@mui/material";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import logo from "./blue-legion2.svg";
+import secret_props from "./properties/secret-properties.json";
 
 const RegistrationPage = (props) => {
 	let showLogo = useMediaQuery("(min-width : 640px)");
+	let [notification, setNotificationMsg] = useState(null);
+	let [loading, setLoading] = useState(false);
 	let nameRef = useRef();
 	let matricRef = useRef();
 
+	console.log("hello")
+
 	const handleClick = () => {
 		let controller = new RegistrationController();
+
 		controller.setDetails({
 			fullName: nameRef.current.value,
 			matricno: matricRef.current.value,
@@ -31,11 +39,22 @@ const RegistrationPage = (props) => {
 				}
 			})
 			.then((data) => {
-				console.log(data);
+				updateUser(data);
+				setLoading(false);
 			})
 			.catch((error) => console.log(error));
+
+		setLoading(true);
+		setNotificationMsg(null);
 	};
 
+	const updateUser = (data) => {
+		if (data.status === "SUCCESS") {
+			setNotificationMsg(<Alert severity="success">{data.msg}</Alert>);
+		} else if (data.status === "FAILED") {
+			setNotificationMsg(<Alert severity="error">{data.msg}</Alert>);
+		}
+	};
 	return (
 		<Box
 			sx={{
@@ -55,7 +74,7 @@ const RegistrationPage = (props) => {
 				}}
 			>
 				<Grid container spacing="6">
-					<Grid item xs="12" sm="7">
+					<Grid item xs={12} sm={7}>
 						<Stack spacing={2} maxWidth="sm">
 							<Typography
 								variant="h6"
@@ -87,12 +106,22 @@ const RegistrationPage = (props) => {
 							>
 								Submit
 							</Button>
+							<Box
+								sx={{
+									display: "flex",
+									justifyContent: "center",
+								}}
+							>
+								<CircularProgressWrapper loading={loading} />
+							</Box>
+
+							{notification}
 						</Stack>
 					</Grid>
 					<Grid
 						item
-						xs="12"
-						sm="5"
+						xs={12}
+						sm={5}
 						sx={{
 							display: "flex",
 							justifyContent: "center",
@@ -131,6 +160,12 @@ const RegistrationPage = (props) => {
 	);
 };
 
+const CircularProgressWrapper = (props) => {
+	if (props.loading) {
+		return <CircularProgress {...props} />;
+	} else return <Box />;
+};
+
 class RegistrationController {
 	constructor() {
 		this.details = {};
@@ -141,7 +176,7 @@ class RegistrationController {
 	}
 
 	async tryRegister() {
-		return fetch("url", {
+		return fetch(secret_props.registration_url, {
 			method: "POST",
 			headers: {
 				"Content-Type": "text/json",

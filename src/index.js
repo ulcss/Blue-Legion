@@ -2,11 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import RegistrationPage from './Registration';
+import MainRouter from './MainRouter';
 
 ReactDOM.render(
   <React.StrictMode>
-    <RegistrationPage/>
+    <MainRouter/>
   </React.StrictMode>,
   document.getElementById('root')
 );
